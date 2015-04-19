@@ -12,4 +12,13 @@
       <th>Dates</th>
     </tr>
   </thead>
+  <tbody>
+    <% @prescriptions.each do |prescription| %>
+    <tr>
+      <td><%= prescription.medication.name %></td>
+      <td><%= prescription.dosage + ' ' + prescription.schedule %></td>
+      <td><%= prescription.starts_on.strftime('%m/%d/%Y').to_s + ' - ' + prescription.ends_on.strftime('%m/%d/%Y').to_s %></td>
+    </tr>
+    <% end %>
+  </tbody>
 </table>
