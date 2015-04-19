@@ -34,10 +34,12 @@ ActiveRecord::Schema.define(version: 20150419212437) do
     t.date    "starts_on"
     t.date    "ends_on"
     t.integer "patient_id"
+    t.integer "user_id"
   end
 
   add_index "prescriptions", ["medication_id"], name: "index_prescriptions_on_medication_id", using: :btree
   add_index "prescriptions", ["patient_id"], name: "index_prescriptions_on_patient_id", using: :btree
+  add_index "prescriptions", ["user_id"], name: "index_prescriptions_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string "name",            null: false
@@ -49,4 +51,5 @@ ActiveRecord::Schema.define(version: 20150419212437) do
 
   add_foreign_key "prescriptions", "medications"
   add_foreign_key "prescriptions", "patients"
+  add_foreign_key "prescriptions", "users"
 end
